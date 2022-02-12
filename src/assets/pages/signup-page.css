@@ -1,0 +1,42 @@
+.signup-wrp {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  background: #ffffff;
+}
+
+.signup-form-wrp {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 330px;
+  width: 290px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px #dddddd;
+}
+
+/* .sign-input-wrp {
+  display: flex;
+  flex-direction: column;
+  width: 78%;
+} */
+
+.signup-form {
+  width: 230px;
+  margin-top: 12px;
+}
+
+.ant-row.ant-form-item:last-child {
+  margin-bottom: 12px;
+}
+
+.signup-form-btn {
+  margin-top: 24px;
+  border-radius: 6px;
+  width: 100%;
+}
+

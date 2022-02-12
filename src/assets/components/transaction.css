@@ -1,0 +1,47 @@
+.balanse-wrp {
+    display: flex;
+    align-items: center;
+}
+
+.amount-wrp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2vw;
+}
+
+.credit-card-pic {  
+    max-width: 40%;
+    height: auto; 
+    /* margin-bottom: 1vw; */
+    filter: drop-shadow(15px 10px 4px #626266);
+}
+
+.create-trans-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1.25vw;
+    height: 3vw;
+    width: 15vw;
+    border-radius: 0.5vw;
+    cursor: pointer ;
+    margin: 1vw;
+  }
+
+  .transaction-wrp {
+    margin-top: 12px 0;
+    background: #eaebec;
+  }
+
+  .create-trans-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 1.25vw;
+    height: 3vw;
+    width: 15vw;
+    border-radius: 0.5vw;
+    cursor: pointer ;
+    margin-bottom: 12px;
+  }

@@ -1,0 +1,71 @@
+.layout-wrp {
+  position: relative;    
+  width: 95%;
+  /* background-color: #ff6d4c; */
+  /* background: #b4a1a1; */
+  /* background: #eaebec; */
+  border-radius: 2.5vw;
+  display: grid;
+  grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+  grid-template-rows: 5vw minmax(34vw, 1fr) 5vw;
+  row-gap: 10px;
+  font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+.header-wrp {
+  display: grid;
+  grid-template-areas: 
+    "logo"
+    "totle"
+    "auth";
+  grid-template-columns: 1fr 1fr 1fr;
+  align-content: center;
+  align-items: center;
+  padding: 0 6vw 0 6vw;
+  color: #ffffff;
+  border-bottom: solid 1px #000000;
+  background: #464F56;
+}
+
+.logo {
+  font-size: 3vw;
+  color: #ffffff;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  font-weight: 300;
+  font-stretch: ultra-expanded;
+  font-size: 3vw;
+}
+
+.auth-wrp {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  /* font-size: 1.2vw; */
+  cursor: pointer ;
+}
+
+.hdr-log-in {
+  margin-left: 6px;
+  color: #ffffff;
+}
+
+.main-container {
+  display: flex;
+}
+
+.footer-wrp {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #464F56;
+  border-top: solid 1px #000000;
+}
+
