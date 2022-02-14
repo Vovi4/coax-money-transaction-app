@@ -1,9 +1,12 @@
-import { SIGN_UP_SUCCESS, LOG_IN_SUCCESS, CREATE_USER_SUCCESS, LOG_OUT, AUTH_ERROR } from "../types/types";
+import { SIGN_UP_SUCCESS, LOG_IN_SUCCESS, CREATE_USER_SUCCESS, RESSET_PASS_SUCCESS,
+  // LOG_OUT,
+   AUTH_ERROR } from "../types/types";
 
 
 const initialState = {
   isAuth: false,
-  logIn: [],
+  resset: false,
+  logData: [],
   user: [],
   error: null
 }
@@ -19,7 +22,7 @@ const authReducer = (state = initialState, action) => {
     case LOG_IN_SUCCESS:
       return {
         ...state,
-        logIn: action.payload,
+        logData: action.payload,
         isAuth: true,
         error: null
       }      
@@ -29,13 +32,14 @@ const authReducer = (state = initialState, action) => {
         isAuth: true,
         error: null
       }
-    case LOG_OUT:
+    case RESSET_PASS_SUCCESS:
       return {
         ...state,
-        logIn: [],
-        user: [],
-        isAuth: false
+        resset: true,
+        error: null
       }
+    // case LOG_OUT:
+    //   return initialState;
 
     case AUTH_ERROR:
       return {

@@ -1,83 +1,61 @@
-import React, {useEffect} from "react";
+import React , {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 
 import { Form, Input, Button, Alert } from "antd";
 import Loader from "../elements/Loader";
 
-import { signUp } from "../redux/actions/authAction";
+import { newPass } from "../redux/actions/authAction";
 
-import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import { LockOutlined } from "@ant-design/icons";
 
-import "../assets/pages/signup-page.css";
+import "../assets/components/resset-password.css";
 import "antd/dist/antd.css";
 // import "../assets/elements/login-form.css"
 
 
 
-const SignUp = () => {
+const ResetPassword = () => {
 
   const navigate = useNavigate();
-  const user = useSelector(state => state.auth.user.id);
+  const resset = useSelector(state => state.auth.resset);
   const alert = useSelector(state => state.auth.error);
   const loader = useSelector(state => state.servise.loading);
 
   useEffect(() => {
-    if (user) {
-      navigate("/create_profile", {replace: true})
+    if (resset) {
+      navigate("/transaction", {replace: true})
     }
-  }, [user]);
+  }, [resset]);
 
 
   const dispatch = useDispatch();
-  // console.log(state)
-
+  
   const [form] = Form.useForm();
 
   const formSubmit = (values) => {
     // console.log("bed data from modal",values)
-    authSignIn(values);
+    ressetPass(values);
     form.resetFields("");
   };
 
-  const authSignIn = (values) => {
-    dispatch(signUp(values))
+  const ressetPass = (values) => {
+    dispatch(newPass(values))
   }
 
   return (
-    <div className="signup-wrp">
-      <div className="signup-form-wrp">
+    <div className="resset-wrp">
+      <div className="resset-form-wrp">
+        <h3>Resset your password</h3>
       {alert && <Alert style={{margin: "9px"}} message={alert.msg} type="warning" />}
+      
         <Form
           form={form}
-          name="signup"
-          className="signup-form"
+          name="resset"
+          className="resset-form"
           initialValues={{ remember: true }}
           onFinish={formSubmit}
         >
-          <Form.Item
-            name="email"
-            rules={[
-              {
-                required: true,
-                message: "Please input your E-mail!"
-              },
-              {
-                whitespace: true,
-                message: "E-mail shouldn't contain spaces!"
-              },
-              {
-                type: "email"
-              },
-            ]}
-            hasFeedback
-          >
-            <Input
-              prefix={<UserOutlined className="site-form-item-icon" />}
-              placeholder="E-mail"
-            />
-          </Form.Item>
-
           <Form.Item
             name="password"
             rules={[
@@ -131,8 +109,8 @@ const SignUp = () => {
           </Form.Item>
           {loader && <Loader/>}
           <Form.Item>
-            <Button type="primary" htmlType="submit" className="signup-form-btn">
-              Create account
+            <Button type="primary" htmlType="submit" className="resset-form-btn">
+              Reset password
             </Button>
           </Form.Item>
         </Form>
@@ -141,7 +119,7 @@ const SignUp = () => {
   );
 }
 
-export default SignUp;
+export default ResetPassword;
 
 
 

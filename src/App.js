@@ -15,6 +15,8 @@ import Main from "./pages/Main";
 import NotFound from "./pages/NotFound";
 
 import Profile from "./components/Profile";
+import ViewProfile from "./components/ViewProfile";
+import UpdateProfile from "./components/UpdateProfile";
 import Contacts from "./components/Contacts";
 import Transaction from "./components/Transaction";
 import Settings from "./components/Settings";
@@ -36,7 +38,10 @@ function App() {
             {/* <Route element={<Private><Main /></Private>}> */}
             <Route element={<Main />}>
               <Route path="contacts" element={<Contacts />} />
-              <Route path="profile" element={<Profile />} />            
+              <Route path="profile" element={<Profile />} >
+                <Route path="view" element={<ViewProfile />} />
+                <Route path="update" element={<UpdateProfile />} />
+              </Route>            
               <Route path="transaction" element={<Transaction />} />
               <Route path="settings" element={<Settings />} />
             </Route>

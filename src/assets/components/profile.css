@@ -1,13 +1,11 @@
-.all-contact-wrp {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;    
+.profile-wrp {
+  display: grid;
+  /* grid-template-areas: 
+    "user-profile"
+    "all-profiles"; */
+  grid-template-rows: 28vw 1fr; 
+  row-gap: 10px;
 }
-  
-  
-/*  
-
 
 .profile-page-wrp {
   display: grid;
@@ -51,7 +49,7 @@
 
 .user-items {
   display: flex;
-  
+  /* background: #ffffff; */
   display: block;
   margin: 0 5vw 0 5vw;
 }
@@ -66,7 +64,7 @@
 
   padding: 1.5vw 0 1.5vw;
   border-bottom: solid 1px #b6b8b9;
-  
+  /* font-size: 1.5vw; */
 }
 
 .user-data p span {
@@ -87,4 +85,4 @@
 
 .ant-input-group-wrapper {
   margin: 24px 0 24px;
-} */
+}

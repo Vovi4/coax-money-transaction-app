@@ -21,7 +21,7 @@ const LogIn = () => {
   const alert = useSelector(state => state.auth.error);
   const loader = useSelector(state => state.servise.loading);
 
-  console.log(alert)
+  // console.log(alert)
   
   useEffect(() => {
     if (isAuth) {
@@ -106,11 +106,11 @@ const LogIn = () => {
             </Form.Item>
           </Form>
         </div>
-        <a className="login-forgot" href="">
-          Forgot password
-        </a>
+        {/* <Link to="/resset_password" className="login-forgot">
+          <p> Forgot password </p>
+        </Link> */}
         <div className="signup-item">
-          <Link to="/signup">
+          <Link to="/signup" >
             <Button type="primary" className="signup-btn">
               Create acount
             </Button>

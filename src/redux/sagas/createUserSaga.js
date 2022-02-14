@@ -14,7 +14,7 @@ function* createUserFetch( action ) {
     yield put({type: SHOW_LOADER})
 
     const { token, id, email, firstName, lastName } = action
-    console.log("action", token, id, email, firstName, lastName )
+    // console.log("action", token, id, email, firstName, lastName )
 
     yield call(createUser, token, id, email, firstName, lastName)
     // console.log("creating data in saga", payload)

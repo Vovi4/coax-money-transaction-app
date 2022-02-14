@@ -32,7 +32,7 @@ const CreateProfile = () => {
 
   const formSubmit = (values) => {
     const {firstName, lastName} = values
-    console.log("before sending", token, id, email, firstName, lastName)
+    // console.log("before sending", token, id, email, firstName, lastName)
     dispatch(createUser({token, id, email, firstName, lastName}))
     form.resetFields("");
   };

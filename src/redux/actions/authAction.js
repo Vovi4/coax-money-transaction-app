@@ -1,4 +1,4 @@
-import { SIGN_UP_REQUEST, LOG_IN_REQUEST, CREATE_USER_REQUEST, LOG_OUT } from "../types/types";
+import { SIGN_UP_REQUEST, LOG_IN_REQUEST, CREATE_USER_REQUEST, RESSET_PASS_REQUEST, LOG_OUT } from "../types/types";
 
 export const signUp = ({email, password}) => {
   return {
@@ -18,6 +18,13 @@ export const logIn = ({email, password}) => {
   return {
     type: LOG_IN_REQUEST,
     email, password
+  }
+};
+
+export const newPass = ({password}) => {
+  return {
+    type: RESSET_PASS_REQUEST,
+    password
   }
 };
 

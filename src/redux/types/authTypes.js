@@ -7,10 +7,9 @@ export const CREATE_USER_SUCCESS = "CREATE_USER_SUCCESS";
 export const LOG_IN_REQUEST = "LOG_IN_REQUEST";
 export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS";
 
+export const RESSET_PASS_REQUEST = "RESSET_PASS_REQUEST";
+export const RESSET_PASS_SUCCESS = "RESSET_PASS_SUCCESS";
+
 export const LOG_OUT = "LOG_OUT";
-
-
-
-
 
 export const AUTH_ERROR = "AUTH_ERROR";

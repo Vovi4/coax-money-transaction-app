@@ -19,16 +19,17 @@ import {
   SettingOutlined
 } from '@ant-design/icons';
 
-const { SubMenu } = Menu;
+// const { SubMenu } = Menu;
 
 const Main = () => {
 
       return (         
       <div className="main-wrp">
-        <nav className="main-nav-wrp">        
+        <nav className="main-nav-wrp">    
+        <>    
         <Menu
-          defaultSelectedKeys={["1"]}
-          defaultOpenKeys={["sub1"]}
+          // defaultSelectedKeys={["1"]}
+          // defaultOpenKeys={["sub1"]}
           mode="inline"
         >          
           <Menu.Item key="1" icon={<GrTransaction />}>            
@@ -37,7 +38,10 @@ const Main = () => {
           <Menu.Item key="2" icon={<ContactsOutlined />}>            
             <Link to="contacts">Contacts</Link>
           </Menu.Item>
-          <SubMenu key="sub1" icon={<UserOutlined />} title="Profile">
+          <Menu.Item key="3" icon={<UserOutlined />}>            
+            <Link to="profile">Profile</Link>
+          </Menu.Item>
+          {/* <SubMenu key="sub1" icon={<UserOutlined />} title="Profile">
             <Link to="profile">
               <Menu.Item key="4">
                 <Link to="profile/view">View profile</Link>
@@ -46,11 +50,12 @@ const Main = () => {
                 <Link to="profile/update">Update profile</Link>
               </Menu.Item>
             </Link>
-          </SubMenu>
+          </SubMenu> */}
           <Menu.Item key="4" icon={<SettingOutlined />}>            
             <Link to="settings">Settings</Link>
           </Menu.Item>
         </Menu>
+        </>
         </nav>
         <main className="main-item-wrp">
           <Outlet />

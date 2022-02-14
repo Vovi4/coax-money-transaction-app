@@ -1,135 +1,88 @@
 import React from "react";
+// import { useDispatch, useSelectot } from "react-redux";
+import { useEffect } from "react";
 
-import { List, Avatar, 
-  // Button,
-   Skeleton } from 'antd';
+import { List, Avatar, Input, 
+  // Popover 
+} from 'antd';
+// import Loader from "../elements/Loader";
+
+// import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
 
 import "../assets/components/contacts.css";
-
 import 'antd/dist/antd.css';
+
+import avatar from "../assets/icons/contact_avatar.svg";
 
 const Contacts = () => {
 
+  // const dispatch = useDispatch();
+
+  // const contacts = useSelectot(state => state.contact.all);
+  // const loader = useSelectot(state => state.servise.loading);
+
+  const { Search } = Input;
+  const onSearch = value => console.log(value);
+
+  useEffect(() => {
+    // dispatch(allContact())
+  }, [])
+
+
+  // const addContent = () => {
+  //   console.log("Add contact")
+  // };
+
+  // const deeteContact = () => {
+  //   console.log("Delete contact")
+  // };
+
+  // const add = (
+  //   <p>Create contact</p>
+  // );
+
+  // const del = (
+  //   <p>Delete contact</p>
+  // );
+
+
   return (
     <div className="contacts-wrp">
-      <List
-        className="loadmore-list"
-        // loading={initLoading}
-        itemLayout="horizontal"
-        // loadMore={loadMore}
-        // dataSource={list}
-        renderItem={item => (
-          <List.Item
-            actions={[<a key="list-loadmore-edit">edit</a>, <a key="list-loadmore-more">more</a>]}
-          >
-            <Skeleton avatar title={false} loading={item.loading} active>
+      <div className="all-contact-wrp">
+        <h2>List of contacts</h2>
+        {/* {loader && <Loader />} */}
+        <Search placeholder="search contact" allowClear onSearch={onSearch} style={{ width: 300 }} />
+        <List
+          itemLayout="vertical"
+          size="small"
+          pagination={{
+            pageSize: 5,
+          }}
+          // dataSource={contacts}
+          renderItem={item => (
+            <List.Item
+              key={item.id}
+              extra={
+                // <Popover content={add} >
+                //   <PlusOutlined onClick={addContact} />
+                // <Popover />
+                {/* <Popover content={del} >
+                  <DeleteOutlined className={deeteContact} />
+                <Popover /> */}
+
+              }
+            >
               <List.Item.Meta
-                avatar={<Avatar src={item.picture.large} />}
-                title={<a href="https://ant.design">{item.name.last}</a>}
-                description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                avatar={<Avatar src={avatar} />}
+                title={`${item.lastName} ${item.lastName}`}
+                description={item.email}
               />
-              <div>content</div>
-            </Skeleton>
-          </List.Item>
-        )}
-      />
+            </List.Item>
+          )}
+        />
+      </div>
     </div>
   );
 };
 
 export default Contacts;
-
-
-
-
-// const count = 3;
-// const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
-
-// class LoadMoreList extends React.Component {
-//   state = {
-//     initLoading: true,
-//     loading: false,
-//     data: [],
-//     list: [],
-//   };
-
-//   componentDidMount() {
-//     fetch(fakeDataUrl)
-//       .then(res => res.json())
-//       .then(res => {
-//         this.setState({
-//           initLoading: false,
-//           data: res.results,
-//           list: res.results,
-//         });
-//       });
-//   }
-
-//   onLoadMore = () => {
-//     this.setState({
-//       loading: true,
-//       list: this.state.data.concat(
-//         [...new Array(count)].map(() => ({ loading: true, name: {}, picture: {} })),
-//       ),
-//     });
-//     fetch(fakeDataUrl)
-//       .then(res => res.json())
-//       .then(res => {
-//         const data = this.state.data.concat(res.results);
-//         this.setState(
-//           {
-//             data,
-//             list: data,
-//             loading: false,
-//           },
-//           () => {
-//             // Resetting window's offsetTop so as to display react-virtualized demo underfloor.
-//             // In real scene, you can using public method of react-virtualized:
-//             // https://stackoverflow.com/questions/46700726/how-to-use-public-method-updateposition-of-react-virtualized
-//             window.dispatchEvent(new Event('resize'));
-//           },
-//         );
-//       });
-//   };
-
-//   render() {
-//     const { initLoading, loading, list } = this.state;
-//     const loadMore =
-//       !initLoading && !loading ? (
-//         <div
-//           style={{
-//             textAlign: 'center',
-//             marginTop: 12,
-//             height: 32,
-//             lineHeight: '32px',
-//           }}
-//         >
-//           <Button onClick={this.onLoadMore}>loading more</Button>
-//         </div>
-//       ) : null;
-
-//     return (
-//       <List
-//         className="loadmore-list"
-//         loading={initLoading}
-//         itemLayout="horizontal"
-//         loadMore={loadMore}
-//         dataSource={list}
-//         renderItem={item => (
-//           <List.Item
-//             actions={[<a key="list-loadmore-edit">edit</a>, <a key="list-loadmore-more">more</a>]}
-//           >
-//             <Skeleton avatar title={false} loading={item.loading} active>
-//               <List.Item.Meta
-//                 avatar={<Avatar src={item.picture.large} />}
-//                 title={<a href="https://ant.design">{item.name.last}</a>}
-//                 description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-//               />
-//               <div>content</div>
-//             </Skeleton>
-//           </List.Item>
-//         )}
-//       />
-//     );
-//   }
-// }

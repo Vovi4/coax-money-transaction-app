@@ -4,6 +4,7 @@ import { LOG_IN_REQUEST, LOG_IN_SUCCESS, AUTH_ERROR,
 } from "../types/types";
 
 
+
 const logInURL = `${process.env.REACT_APP_API_URL}/auth/v1/token?grant_type=password`;
 const SUPABASE_KEY = process.env.REACT_APP_APP_KEY;
 
@@ -24,7 +25,9 @@ function* logInFetch(action) {
       let error = payload
       yield put({ type: AUTH_ERROR, error })
       } else {
-        yield put({ type: LOG_IN_SUCCESS, payload })
+        yield put({ type: LOG_IN_SUCCESS, payload });
+        localStorage.setItem("token",payload.access_token);
+        localStorage.setItem("id",payload.user.id);
       }
     yield put({type: HIDE_LOADER})
     

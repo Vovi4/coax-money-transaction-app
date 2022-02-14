@@ -3,12 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { Outlet, Link } from "react-router-dom";
 
-import { logOut } from "../redux/actions/authAction";
+// import { logOut } from "../redux/actions/authAction";
+// import { logOutProfile } from "../redux/actions/profileAction";
 
 import "../assets/layout.css";
 
 import { BsCashCoin } from "react-icons/bs";
 import { UserOutlined } from '@ant-design/icons';
+import { LOG_OUT } from "../redux/types/authTypes";
 
 function Layout() {
 
@@ -25,7 +27,10 @@ function Layout() {
 
   const logOutUser = () => {
     console.log("user log out")
-    dispatch(logOut())
+    dispatch({type: LOG_OUT});
+    // dispatch(logOut());
+    // dispatch(logOutProfile());
+    localStorage.clear();
   }
 
   return (
