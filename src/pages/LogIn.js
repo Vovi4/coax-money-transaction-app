@@ -34,7 +34,7 @@ const LogIn = () => {
   const dispatch = useDispatch();
 
   const logInSubmit = (values) => {
-    // console.log(values)
+    console.log(values)
     dispatch(logIn(values))
     form.resetFields("");
   };

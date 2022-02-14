@@ -1,8 +1,21 @@
+.contacts-wrp {
+  background: #f8f8f8;
+  min-height: 35vw;
+}
+
 .all-contact-wrp {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;    
+}
+
+.users-list-wrp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.5vw 0 1.5vw;
+  width: 100%;
 }
   
   

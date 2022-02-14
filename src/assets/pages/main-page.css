@@ -17,7 +17,7 @@
 
 .main-item-wrp {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: column;
   background: #ffffff;
   padding: 2vw;

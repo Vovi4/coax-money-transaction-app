@@ -1,88 +1,101 @@
 import React from "react";
-// import { useDispatch, useSelectot } from "react-redux";
-import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
 
-import { List, Avatar, Input, 
-  // Popover 
-} from 'antd';
-// import Loader from "../elements/Loader";
+import UsersList from "./UsersList";
 
-// import { PlusOutlined, DeleteOutlined } from '@ant-design/icons';
+import { allUserContacts, deleteContact } from "../redux/actions/contactAction";
+
+import { List, Avatar, Input, Button, Popover } from 'antd';
+import Loader from "../elements/Loader";
+
+import { DeleteOutlined } from '@ant-design/icons';
 
 import "../assets/components/contacts.css";
 import 'antd/dist/antd.css';
 
-import avatar from "../assets/icons/contact_avatar.svg";
+import user_avatar from "../assets/icons/user_avatar.svg";
 
 const Contacts = () => {
 
-  // const dispatch = useDispatch();
-
-  // const contacts = useSelectot(state => state.contact.all);
-  // const loader = useSelectot(state => state.servise.loading);
-
-  const { Search } = Input;
-  const onSearch = value => console.log(value);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    // dispatch(allContact())
-  }, [])
+    dispatch(allUserContacts())
+  }, []);
 
+  const [show, setShow] = useState(false);
+  const [newContact, setNewContact] = useState('');
 
-  // const addContent = () => {
-  //   console.log("Add contact")
-  // };
+  const contacts = useSelector(state => state.contact.contact);
+  const loader = useSelector(state => state.servise.loading);
 
-  // const deeteContact = () => {
-  //   console.log("Delete contact")
-  // };
+  const showUsers = () => {
+    setShow(!show);
+    console.log(show)
+  }
 
-  // const add = (
-  //   <p>Create contact</p>
-  // );
+  const searchContact = (e) => {
+    setNewContact(contacts.filter(el => el.email.includes(e.target.value)))
+  }
 
-  // const del = (
-  //   <p>Delete contact</p>
-  // );
-
+  const delContact = (id) => {
+    dispatch(deleteContact(id))
+  }
 
   return (
     <div className="contacts-wrp">
       <div className="all-contact-wrp">
         <h2>List of contacts</h2>
-        {/* {loader && <Loader />} */}
-        <Search placeholder="search contact" allowClear onSearch={onSearch} style={{ width: 300 }} />
-        <List
-          itemLayout="vertical"
-          size="small"
-          pagination={{
-            pageSize: 5,
-          }}
-          // dataSource={contacts}
-          renderItem={item => (
-            <List.Item
-              key={item.id}
-              extra={
-                // <Popover content={add} >
-                //   <PlusOutlined onClick={addContact} />
-                // <Popover />
-                {/* <Popover content={del} >
-                  <DeleteOutlined className={deeteContact} />
-                <Popover /> */}
-
-              }
-            >
-              <List.Item.Meta
-                avatar={<Avatar src={avatar} />}
-                title={`${item.lastName} ${item.lastName}`}
-                description={item.email}
-              />
-            </List.Item>
-          )}
-        />
+        {loader && <Loader />}
+        {(typeof (contacts) === "string")
+          ? <h2>You dont have contacts yet</h2>
+          : <>
+            <Input placeholder="search profile" allowClear onChange={searchContact} style={{ width: 300 }} />
+            <List
+              className="users-profile-list"
+              itemLayout="vertical"
+              size="small"
+              pagination={{ pageSize: 3 }}
+              dataSource={!newContact 
+                ? contacts 
+                : newContact}
+              renderItem={item => (
+                <List.Item
+                  key={item.id}
+                  extra={
+                    <Popover content="Add contact">
+                      <DeleteOutlined onClick={() => delContact(item.user)} />
+                    </Popover>
+                  }
+                >
+                  <List.Item.Meta
+                    avatar={<Avatar src={user_avatar} />}
+                    title={`${item.firstName} ${item.lastName}`}
+                    description={`${item.email} ${item.user}`}
+                  />
+                </List.Item>
+              )}
+            />
+          </>
+        }
+        <div className="users-list-wrp">
+          <div className="view-btn-wrp">
+            <Button type="default" className="view-user-btn" onClick={showUsers}>
+              {show
+                ? "Hide users"
+                : "View all users"}
+            </Button>
+          </div>
+          {show && <UsersList />}
+        </div>
       </div>
     </div>
   );
 };
 
 export default Contacts;
+
+
+
+

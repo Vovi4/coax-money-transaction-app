@@ -3,12 +3,14 @@ import { combineReducers } from "redux";
 import authReducer from "./authReducer";
 import serviseReducer from "./serviseReduser";
 import profileReducer from "./profileReduser";
+import contactReduser from "./contactReduser";
 
 
 export const appReducer = combineReducers({
   auth: authReducer,
   servise: serviseReducer,
-  profile: profileReducer
+  profile: profileReducer,
+  contact: contactReduser
 });
 
 

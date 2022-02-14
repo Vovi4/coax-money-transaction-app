@@ -1,0 +1,23 @@
+.all-profile-wrp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f8f8f8;
+  margin: 10px 0 10px;
+  width: 100%;
+}
+
+.users-search-input {
+  width: 200px;
+}
+
+.ant-input-group-wrapper {
+  margin: 24px 0 24px;
+}
+
+.ant-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2vw;
+  width: 80%;
+}

@@ -1,9 +1,5 @@
 import { takeEvery, put, call } from "redux-saga/effects";
-import { LOG_IN_REQUEST, LOG_IN_SUCCESS, AUTH_ERROR, 
-  SHOW_LOADER, HIDE_LOADER 
-} from "../types/types";
-
-
+import { LOG_IN_REQUEST, LOG_IN_SUCCESS, AUTH_ERROR, SHOW_LOADER, HIDE_LOADER } from "../types/types";
 
 const logInURL = `${process.env.REACT_APP_API_URL}/auth/v1/token?grant_type=password`;
 const SUPABASE_KEY = process.env.REACT_APP_APP_KEY;
@@ -18,6 +14,7 @@ function* logInFetch(action) {
     yield put({type: SHOW_LOADER})
 
     const { email, password } = action
+    console.log(action)
 
     const payload = yield call(logInUser, email, password)
     

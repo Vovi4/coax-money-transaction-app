@@ -8,6 +8,10 @@ import ressetPassSaga from "./ressetPassSaga";
 import allProfileSaga from "./allProfileSaga";
 import userProfileSaga from "./userProfileSaga";
 
+import createContactSaga from "./createContactSaga";
+import allUserContactsSaga from "./allUserContactsSaga";
+import deleteContactSaga from "./deleteContactSaga";
+
 function* rootSaga() {
   yield all([
     signUpSaga(),
@@ -15,7 +19,10 @@ function* rootSaga() {
     logInSaga(),
     allProfileSaga(),
     userProfileSaga(),
-    ressetPassSaga()
+    ressetPassSaga(),
+    createContactSaga(),
+    allUserContactsSaga(),
+    deleteContactSaga()
   ])
 }
 

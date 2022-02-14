@@ -44,7 +44,7 @@ async function getUserProfile (token, id) {
     method: "GET",
     headers: {
       "apikey": SUPABASE_KEY,
-      "Authorization": `Beare ${token}`,
+      "Authorization": `Bearer ${token}`,
     },
   });
   return await response.json();

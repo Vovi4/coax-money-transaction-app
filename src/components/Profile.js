@@ -1,37 +1,35 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
-import { Button } from "antd";
-import { List, Avatar, Input } from 'antd';
+import UsersList from "./UsersList";
+
+import { userProfile } from "../redux/actions/profileAction";
+
 import Loader from "../elements/Loader";
-
-import { UserProfile, AllUsersProfile } from "../redux/actions/profileAction";
+import { Button } from "antd";
 
 import "../assets/components/profile.css";
 import "antd/dist/antd.css";
 
-import { PlusOutlined } from "@ant-design/icons";
-
 import avatar from "../assets/icons/avatar.svg"
-import user_avatar from "../assets/icons/user_avatar.svg"
 
 
 const Profile = () => {
 
-  const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
 
-  const profile = useSelector(state => state.profile.profile);
-  const loader = useSelector(state => state.servise.loading);
+  const dispatch = useDispatch();
+  
+    useEffect(() => {
+      dispatch(userProfile())
+    }, []);
+
   const user = useSelector(state => state.profile.user_profile[0]);
 
-  const { Search } = Input;
-  const onSearch = value => console.log(value);
-
-  useEffect(() => {
-    dispatch(AllUsersProfile());
-    dispatch(UserProfile())
-  }, []);
+  const showUsers = () => {
+    setShow(!show)
+  }
 
   return (
     <div className="profile-wrp">
@@ -60,32 +58,17 @@ const Profile = () => {
                   <span>{user.email}</span>
                 </div>
               </div>
+              <div className="view-btn-wrp">
+                <Button type="default" className="view-user-btn" onClick={showUsers}>
+                  {show 
+                    ? "Hide user profile" 
+                    : "View all users profile"}
+                </Button>
+              </div>
             </div>
           </div>
-          <div className="all-profile-wrp">
-            <h2>List of user profiles</h2>
-            {loader && <Loader />}
-            <Search placeholder="search profile" allowClear onSearch={onSearch} style={{ width: 300 }} />
-            <List
-              itemLayout="vertical"
-              size="small"
-              pagination={{
-                pageSize: 5,
-              }}
-              dataSource={profile}
-              renderItem={item => (
-                <List.Item
-                  key={item.id}
-                  extra={<PlusOutlined />}
-                >
-                  <List.Item.Meta
-                    avatar={<Avatar src={user_avatar} />}
-                    title={`${item.lastName} ${item.lastName}`}
-                    description={item.email}
-                  />
-                </List.Item>
-              )}
-            />
+          <div className="list-wrp">
+            {show && <UsersList />}
           </div>
         </>
       }
