@@ -72,6 +72,33 @@
   align-items: center;
 }
 
+.update-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2vw 0 2vw;
+  width: 350px;
+  height: 200px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px #dddddd;
+}
+
+
+.form-item {
+  margin-top: 16px;
+  width: 220px;
+}
+
+.form-btn-wrp {
+  display: flex;
+  justify-content: space-between;
+  /* margin: 24px; */
+}
+
 .list-wrp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
 }

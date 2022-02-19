@@ -1,11 +1,8 @@
-import { SIGN_UP_SUCCESS, LOG_IN_SUCCESS, CREATE_USER_SUCCESS, RESSET_PASS_SUCCESS,
-  // LOG_OUT,
-   AUTH_ERROR } from "../types/types";
+import { SIGN_UP_SUCCESS, LOG_IN_SUCCESS, CREATE_USER_SUCCESS, RESSET_PASS_SUCCESS, AUTH_ERROR } from "../types/types";
 
 
 const initialState = {
   isAuth: false,
-  resset: false,
   logData: [],
   user: [],
   error: null
@@ -35,7 +32,6 @@ const authReducer = (state = initialState, action) => {
     case RESSET_PASS_SUCCESS:
       return {
         ...state,
-        resset: true,
         error: null
       }
     // case LOG_OUT:

@@ -24,9 +24,6 @@ const UsersList = () => {
   const loader = useSelector(state => state.servise.loading);
   // const user = useSelector(state => state.profile.user_profile[0]);
 
-
-  // console.log(profile)
-
   const [newProfile, setNewProfile] = useState('');
 
   const searchProfile = (e) => {
@@ -46,12 +43,14 @@ const UsersList = () => {
     <div className="all-profile-wrp">
       <h2>List of user profiles</h2>
       {loader && <Loader />}
-      <Input placeholder="search profile" allowClear onChange={searchProfile} style={{ width: 300 }} />
+      <Input placeholder="Search profile" allowClear onChange={searchProfile} style={{ width: 250 }} />
       <List
         className="users-profile-list"
         itemLayout="vertical"
         size="small"
-        pagination={{ pageSize: 5 }}
+        pagination={profile.length > 5 
+          ? { pageSize: 5 }
+          : false}
         dataSource={!newProfile 
           ? profile 
           : newProfile}

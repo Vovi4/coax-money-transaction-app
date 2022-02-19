@@ -1,4 +1,4 @@
-import { USER_PROFILE_REQUEST, ALL_PROFILES_REQUEST, LOG_OUT_PROFILE } from "../types/types";
+import { USER_PROFILE_REQUEST, ALL_PROFILES_REQUEST, UPDATE_PROFILE_REQUEST } from "../types/types";
 
 export const userProfile = () => {
   return {
@@ -12,8 +12,9 @@ export const allUsersProfile = () => {
   }
 };
 
-export const logOutProfile = () => {
+export const updateUserProfile = (payload) => {
   return {
-    type: LOG_OUT_PROFILE
+    type: UPDATE_PROFILE_REQUEST,
+    payload
   }
 };

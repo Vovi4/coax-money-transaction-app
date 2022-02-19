@@ -1,7 +1,7 @@
-import { takeEvery, put, call } from "redux-saga/effects";
+import { takeEvery, put, call, delay } from "redux-saga/effects";
 
-import { DELETE_CONTACT_REQUEST, DELETE_CONTACT_SUCCESS, CONTACT_ERROR, SHOW_LOADER, HIDE_LOADER } from "../types/types";
-const deleteContactURL = process.env.REACT_APP_API_URL;
+import { DELETE_CONTACT_REQUEST, DELETE_CONTACT_SUCCESS, CONTACT_ERROR, SHOW_LOADER, HIDE_LOADER, SHOW_MESSAGE, HIDE_MESSAGE } from "../types/types";
+const API_URL = process.env.REACT_APP_API_URL;
 const SUPABASE_KEY = process.env.REACT_APP_APP_KEY;
 
 export default function* deleteContactSaga() {
@@ -14,30 +14,27 @@ function* deleteContactFetch (action) {
 
     const token = localStorage.getItem("token");
     const owner_id = localStorage.getItem("id");
-    const { id } = action;
-    console.log(action)
-    const contact_id = id;
-    
-    console.log("Contact ID", id)
+    const contact_id = action.payload;
  
     yield call(deleteContact, token, owner_id, contact_id);
     
     yield put({ type: DELETE_CONTACT_SUCCESS })
+    yield put({ type: SHOW_MESSAGE, payload: "Contact was deleted" })
+    yield delay(2000)
+    yield put({ type: HIDE_MESSAGE })
 
     yield put({type: HIDE_LOADER})    
 
   } catch (error) {
     yield put({ type: CONTACT_ERROR, error })
     console.log("Something wrong")
-    yield put({type: HIDE_LOADER})
-    
+    yield put({type: HIDE_LOADER})    
   }
 }
 
 async function deleteContact(token, owner_id, contact_id) {
 
-  // const response = 
-  await fetch(`${deleteContactURL}/rest/v1/contact?owner=eq.${owner_id}&contact=eq.${contact_id}`, {
+  await fetch(`${API_URL}/rest/v1/contact?owner=eq.${owner_id}&contact=eq.${contact_id}`, {
     method: "DELETE",
     headers: {
       "apikey": SUPABASE_KEY,
@@ -45,7 +42,6 @@ async function deleteContact(token, owner_id, contact_id) {
       "Content-Type": "application/json"
     },
   });
-  // return await response.json();
 }
 
 

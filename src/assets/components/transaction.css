@@ -1,47 +1,111 @@
+.transaction-wrp {
+  background: #f8f8f8;
+}
+.user-header-wrp {
+  display: flex;
+  margin: 1vw 0 1vw 3vw ;
+}
+
+.user-avatar-trans {
+  margin-right: 3vw;
+  max-width: 80px;
+  height: auto;
+}
+
+.user-discr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .balanse-wrp {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.trans-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .amount-wrp {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 2vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 2vw 2vw 2vw;
+}
+
+.user-coins {
+  margin-right: 7vw;
+  max-width: 8vw;
+  height: auto;
+}
+
+.user-balance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.amount {
+  font-size: 3vw;
 }
 
 .credit-card-pic {  
-    max-width: 40%;
-    height: auto; 
-    /* margin-bottom: 1vw; */
-    filter: drop-shadow(15px 10px 4px #626266);
+  max-width: 35%;
+  height: auto; 
+  margin-right: 5vw;
+  filter: drop-shadow(15px 10px 4px #626266);
 }
 
 .create-trans-btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    font-size: 1.25vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+    /* font-size: 1.25vw;
     height: 3vw;
     width: 15vw;
-    border-radius: 0.5vw;
-    cursor: pointer ;
-    margin: 1vw;
-  }
+    border-radius: 0.5vw; */
+  cursor: pointer ;
+  margin: 1vw;
+}
 
-  .transaction-wrp {
-    margin-top: 12px 0;
-    background: #eaebec;
-  }
+.trans-form-wrp {
+  display: flex;
+  justify-content: center;
+  margin: 2vw;
+}
 
-  .create-trans-btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    font-size: 1.25vw;
-    height: 3vw;
-    width: 15vw;
-    border-radius: 0.5vw;
-    cursor: pointer ;
-    margin-bottom: 12px;
-  }
+.trans-list-wrp {
+  display: flex;
+  margin: 2vw;
+  min-height: 5vw;
+  /* background: #f8f8f8; */
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.ant-list-item-meta {
+  align-items: center;
+}
+
+.ant-list-item-meta-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.trans-to-icon {
+  font-size: 3vw;
+  color: #29bb89;
+}
+
+.trans-from-icon {
+  font-size: 3vw;
+  color: #b8b5ff;
+}

@@ -1,7 +1,7 @@
-import { takeEvery, put, call } from "redux-saga/effects";
+import { takeEvery, put, call, delay } from "redux-saga/effects";
 
-import { CRETE_CONTACT_REQUEST, CRETE_CONTACT_SUCCESS, CONTACT_ERROR, SHOW_LOADER, HIDE_LOADER } from "../types/types";
-const setContactURL = `${process.env.REACT_APP_API_URL}/rest/v1/contact`;
+import { CRETE_CONTACT_REQUEST, CRETE_CONTACT_SUCCESS, CONTACT_ERROR, SHOW_LOADER, HIDE_LOADER, SHOW_MESSAGE, HIDE_MESSAGE } from "../types/types";
+const API_URL = process.env.REACT_APP_API_URL;
 const SUPABASE_KEY = process.env.REACT_APP_APP_KEY;
 
 export default function* createContactSaga() {
@@ -14,40 +14,27 @@ function* createContactFetch (action) {
 
     const token = localStorage.getItem("token");
     const owner_id = localStorage.getItem("id");
-    const { id } = action;
-    console.log(action)
-    const contact_id = id;
-    
-    console.log("Contact ID", id)
-    
-    // const payload = 
+    const contact_id = action.payload;
+   
     yield call(setContact, token, owner_id, contact_id);
     
-    // console.log("creating data in saga", payload)
-
-    // if(Object.keys(payload).includes("message")){
-    //   let error = payload
-    //   yield put({ type: CONTACT_ERROR, error })
-    //   } else {
-    //     yield put({ type: CRETE_CONTACT_SUCCESS })
-    //   }
-
-    yield put({ type: CRETE_CONTACT_SUCCESS })
+      yield put({ type: CRETE_CONTACT_SUCCESS })
+      yield put({ type: SHOW_MESSAGE, payload: "Contact was created" })
+      yield delay(2000)
+      yield put({ type: HIDE_MESSAGE })
 
     yield put({type: HIDE_LOADER})    
 
   } catch (error) {
     yield put({ type: CONTACT_ERROR, error })
     console.log("Something wrong")
-    yield put({type: HIDE_LOADER})
-    
+    yield put({type: HIDE_LOADER})    
   }
 }
 
 async function setContact(token, owner_id, contact_id) {
 
-  // const response = 
-  await fetch(setContactURL, {
+  await fetch(`${API_URL}/rest/v1/contact`, {
     method: "POST",
     headers: {
       "apikey": SUPABASE_KEY,
@@ -59,7 +46,6 @@ async function setContact(token, owner_id, contact_id) {
       "contact": contact_id
     }),
   });
-  // return await response.json();
 }
 
 

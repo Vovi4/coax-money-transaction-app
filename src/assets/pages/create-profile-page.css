@@ -5,6 +5,20 @@
   background: #ffffff;
 }
 
+.user-create-content {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px #dddddd;
+}
+
+.profile-pic {
+  margin-left: 20px;
+  height: 280px;
+  width: auto;
+}
+
 .user-form-wrp {
   display: flex;
   position: relative;
@@ -14,16 +28,7 @@
   flex-wrap: nowrap;
   height: 330px;
   width: 290px;
-  background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px 5px #dddddd;
 }
-
-/* .sign-input-wrp {
-  display: flex;
-  flex-direction: column;
-  width: 78%;
-} */
 
 .user-create-form {
   width: 230px;

@@ -1,10 +1,9 @@
-import { USER_PROFILE_SUCCESS, ALL_PROFILES_SUCCESS, PROFILE_ERROR, 
-  // LOG_OUT_PROFILE
- } from "../types/types";
+import { USER_PROFILE_SUCCESS, ALL_PROFILES_SUCCESS, PROFILE_ERROR, UPDATE_PROFILE_SUCCESS } from "../types/types";
 
 
 const initialState = {
   user_profile: [],
+  user_update: [],
   profile: [],
   error: null
 }
@@ -24,6 +23,13 @@ const profileReducer = (state = initialState, action) => {
         user_profile: action.payload,
         // error: null
       }
+
+    case UPDATE_PROFILE_SUCCESS:
+      return {
+        ...state,
+        user_update: action.payload,
+        // error: null
+      }
     
     case PROFILE_ERROR:
       return {
@@ -31,9 +37,6 @@ const profileReducer = (state = initialState, action) => {
         error: action.error
       }
 
-    // case LOG_OUT_PROFILE:
-    //   return initialState;
-    
     default: return state
   }
 }

@@ -3,8 +3,7 @@ import { takeEvery, put, call } from "redux-saga/effects";
 import { USER_PROFILE_REQUEST, USER_PROFILE_SUCCESS, PROFILE_ERROR, SHOW_LOADER, HIDE_LOADER } from "../types/types";
 
 // const createUserURL = `${process.env.REACT_APP_API_URL}/rest/v1/profile?user=eq.${id}&select=*`;
-const userProfileURL = `${process.env.REACT_APP_API_URL}`;
-
+const baseURL = process.env.REACT_APP_API_URL;
 const SUPABASE_KEY = process.env.REACT_APP_APP_KEY;
 
 export default function* userProfileSaga() {
@@ -40,7 +39,7 @@ function* getUserProfileFetch () {
 
 async function getUserProfile (token, id) {
 
-  const response = await fetch(`${userProfileURL}/rest/v1/profile?user=eq.${id}&select=*`, {
+  const response = await fetch(`${baseURL}/rest/v1/profile?user=eq.${id}&select=*`, {
     method: "GET",
     headers: {
       "apikey": SUPABASE_KEY,

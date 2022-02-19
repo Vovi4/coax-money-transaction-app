@@ -43,8 +43,8 @@ function Layout() {
         <div className="auth-wrp">
           <UserOutlined />
           { isAuth
-            ? <span className="hdr-log-out" onClick={logOutUser}>Log Out</span>
-            : <span className="hdr-log-in"><Link to="login">Log In</Link></span>
+            ? <span className="hdr-log" onClick={logOutUser}>Log Out</span>
+            : <span className="hdr-log"><Link to="login">Log In</Link></span>
           }
         </div>
       </header>

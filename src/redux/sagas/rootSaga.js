@@ -7,10 +7,14 @@ import ressetPassSaga from "./ressetPassSaga";
 
 import allProfileSaga from "./allProfileSaga";
 import userProfileSaga from "./userProfileSaga";
+import updateProfileSaga from "./updateProfileSaga"
 
 import createContactSaga from "./createContactSaga";
 import allUserContactsSaga from "./allUserContactsSaga";
 import deleteContactSaga from "./deleteContactSaga";
+
+import createTransactionSaga from "./createTransactionSaga";
+import allTransactionsSaga from "./allTransactionsSaga";
 
 function* rootSaga() {
   yield all([
@@ -19,10 +23,13 @@ function* rootSaga() {
     logInSaga(),
     allProfileSaga(),
     userProfileSaga(),
+    updateProfileSaga(),
     ressetPassSaga(),
     createContactSaga(),
     allUserContactsSaga(),
-    deleteContactSaga()
+    deleteContactSaga(),
+    createTransactionSaga(),
+    allTransactionsSaga()
   ])
 }
 

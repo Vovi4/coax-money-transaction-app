@@ -1,8 +1,7 @@
-import { takeEvery, put, call } from "redux-saga/effects";
-import { RESSET_PASS_REQUEST, RESSET_PASS_SUCCESS, 
-  AUTH_ERROR, SHOW_LOADER, HIDE_LOADER } from "../types/types";
+import { takeEvery, put, call, delay } from "redux-saga/effects";
+import { RESSET_PASS_REQUEST, RESSET_PASS_SUCCESS, AUTH_ERROR, SHOW_LOADER, HIDE_LOADER, SHOW_MESSAGE, HIDE_MESSAGE } from "../types/types";
 
-const ressetPassURL = `${process.env.REACT_APP_API_URL}/auth/v1/user`;
+const API_URL = process.env.REACT_APP_API_URL;
 const SUPABASE_KEY = process.env.REACT_APP_APP_KEY;
 
 export default function* ressetPassSaga() {
@@ -14,7 +13,7 @@ function* ressetFetch(action) {
     yield put({type: SHOW_LOADER})
     
     const token = localStorage.getItem("token");
-    const { password } = action;    
+    const { password } = action.payload   
     
     const payload = yield call(ressatPass, token, password)
     
@@ -22,8 +21,10 @@ function* ressetFetch(action) {
       let error = payload
       yield put({ type: AUTH_ERROR, error })
     } else {
-      console.log(payload)
-      yield put({ type: RESSET_PASS_SUCCESS , payload});
+      yield put({ type: RESSET_PASS_SUCCESS });
+      yield put({ type: SHOW_MESSAGE, payload: "Password was reset" })
+      yield delay(2000)
+      yield put({ type: HIDE_MESSAGE })
     }
     yield put({type: HIDE_LOADER})
     
@@ -36,7 +37,7 @@ function* ressetFetch(action) {
 
 async function ressatPass (token, password) {
  
-  const response = await fetch(ressetPassURL, {
+  const response = await fetch(`${API_URL}/auth/v1/user`, {
     method: "PUT",
     headers: {
       "apikey": SUPABASE_KEY,

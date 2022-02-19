@@ -4,7 +4,7 @@ import { SIGN_UP_REQUEST, SIGN_UP_SUCCESS, AUTH_ERROR, SHOW_LOADER, HIDE_LOADER
 
 } from "../types/types";
 
-const signUpURL = `${process.env.REACT_APP_API_URL}/auth/v1/signup`;
+const API_URL = process.env.REACT_APP_API_URL;
 const SUPABASE_KEY = process.env.REACT_APP_APP_KEY;
 
 export default function* signUpSaga() {
@@ -16,7 +16,7 @@ function* signUpFetch( action ) {
   try {
     yield put({type: SHOW_LOADER})
     
-    const { email, password } = action
+    const { email, password } = action.payload
 
     const userData = yield call(signUpUser, email, password)
 
@@ -43,7 +43,7 @@ function* signUpFetch( action ) {
 
 async function signUpUser (email, password) {
 
-  const response = await fetch(signUpURL, {
+  const response = await fetch(`${API_URL}/auth/v1/signup`, {
     method: "POST",
     headers: {
       "apikey": SUPABASE_KEY,

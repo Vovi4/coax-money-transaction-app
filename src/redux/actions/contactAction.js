@@ -6,16 +6,20 @@ export const allUserContacts = () => {
   }
 };
 
-export const deleteContact = (id) => {
+// export const deleteContact = (id) => {
+export const deleteContact = (payload) => {
   return {
     type: DELETE_CONTACT_REQUEST,
-    id
+    payload
+    // id
   }
 };
 
-export const createContact = (id) => {
+// export const createContact = (id) => {
+export const createContact = (payload) => {
   return {
     type: CRETE_CONTACT_REQUEST,
-    id
+    payload
+    // id
   }
 };
