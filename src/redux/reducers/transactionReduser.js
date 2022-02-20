@@ -2,7 +2,7 @@ import { CRETE_TRANSACTION_SUCCESS, ALL_TRANSACTION_SUCCESS, TRANSACTION_ERROR }
 
 const initialState = {
   transaction: [],
-  amount: [],
+  // amount: [],
   error: null
 }
 
@@ -12,21 +12,18 @@ const transactionReduser = (state = initialState, action) => {
       return {
         ...state,
         error: null
-      }
-    
+      }    
     case ALL_TRANSACTION_SUCCESS:
       return {
         ...state,
         transaction: action.payload,
         error: null
-      }
-    
+      }    
     case TRANSACTION_ERROR:
       return {
         ...state,
         error: action.error
-      }
-    
+      }    
     default: return state
   }
 }

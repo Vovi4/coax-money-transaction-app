@@ -36,8 +36,7 @@ function* signUpFetch( action ) {
   } catch (error) {
     yield put({ type: AUTH_ERROR, error })
     console.log("Something wrong")
-    yield put({type: HIDE_LOADER})
-    
+    yield put({type: HIDE_LOADER})    
   }
 }
 

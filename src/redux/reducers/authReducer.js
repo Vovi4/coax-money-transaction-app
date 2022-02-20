@@ -34,16 +34,12 @@ const authReducer = (state = initialState, action) => {
         ...state,
         error: null
       }
-    // case LOG_OUT:
-    //   return initialState;
-
     case AUTH_ERROR:
       return {
         ...state,
         error: action.error,
         isAuth: false
-      }
-    
+      }    
     default: return state
   }
 }

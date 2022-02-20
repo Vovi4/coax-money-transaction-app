@@ -3,7 +3,7 @@ import { USER_PROFILE_SUCCESS, ALL_PROFILES_SUCCESS, PROFILE_ERROR, UPDATE_PROFI
 
 const initialState = {
   user_profile: [],
-  user_update: [],
+  // user_update: [],
   profile: [],
   error: null
 }
@@ -13,30 +13,23 @@ const profileReducer = (state = initialState, action) => {
     case ALL_PROFILES_SUCCESS:
       return {
         ...state,
-        profile: action.payload,
-        // error: null
+        profile: action.payload
       }
-
     case USER_PROFILE_SUCCESS:
       return {
         ...state,
-        user_profile: action.payload,
-        // error: null
+        user_profile: action.payload
       }
-
     case UPDATE_PROFILE_SUCCESS:
       return {
         ...state,
-        user_update: action.payload,
-        // error: null
-      }
-    
+        // user_update: action.payload
+      }    
     case PROFILE_ERROR:
       return {
         ...state,
         error: action.error
       }
-
     default: return state
   }
 }

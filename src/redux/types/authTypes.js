@@ -10,6 +10,7 @@ export const LOG_IN_SUCCESS = "LOG_IN_SUCCESS";
 export const RESSET_PASS_REQUEST = "RESSET_PASS_REQUEST";
 export const RESSET_PASS_SUCCESS = "RESSET_PASS_SUCCESS";
 
-export const LOG_OUT = "LOG_OUT";
+export const LOG_OUT_REQUEST = "LOG_OUT_REQUEST";
+export const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS";
 
 export const AUTH_ERROR = "AUTH_ERROR";

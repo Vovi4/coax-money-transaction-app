@@ -11,34 +11,27 @@ const contactReduser = (state = initialState, action) => {
       return {
         ...state,
         error: null
-      }
-    
+      }    
     case USER_CONTACTS_SUCCESS:
       return {
         ...state,
-        contact: action.users,
-        // error: null
+        contact: action.users
       }
-
     case EMPTY_USERS_SUCCESS:
       return {
         ...state,
-        contact: action.payload,
-        // error: null
+        contact: action.payload
       }
-
     case DELETE_CONTACT_SUCCESS:
       return {
         ...state,
           error: null
-      }
-    
+      }    
     case CONTACT_ERROR:
       return {
         ...state,
         error: action.error
-      }
-    
+      }    
     default: return state
   }
 }

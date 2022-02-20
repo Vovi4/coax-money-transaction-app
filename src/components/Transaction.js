@@ -7,11 +7,10 @@ import TransactionForm from "../components/TransactionForm";
 import { userProfile } from "../redux/actions/profileAction";
 import { allUserContacts } from "../redux/actions/contactAction";
 import { getAllTransaction } from "../redux/actions/transactionAction";
+import { allUsersProfile } from "../redux/actions/profileAction";
 
 import Loader from "../elements/Loader";
 import { Button, List, message } from "antd";
-
-import "../assets/components/transaction.css";
 
 import { BsFillArrowRightCircleFill, BsFillArrowLeftCircleFill } from "react-icons/bs";
 
@@ -19,27 +18,24 @@ import card from "../assets/image/credit_card.jpg";
 import avatar from "../assets/icons/avatar.svg"
 import coins from "../assets/icons/coins.svg"
 
+import "../assets/components/transaction.css";
+
 
 const Transaction = () => {
 
-  const [balanse, setBalanse] = useState(0);
-  const [form, setForm] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(userProfile());
+    dispatch(userProfile())
     dispatch(getAllTransaction())
+    dispatch(allUsersProfile());
   }, []);
 
-  useEffect(() => {
-    dispatch(allUserContacts());
-  }, [form]);
-
-  const showForm = () => {
-    setForm(!form);
-  }
+  const [balanse, setBalanse] = useState(0);
+  const [form, setForm] = useState(false);
 
   const user = useSelector(state => state.profile.user_profile[0]);
+  const allUsers = useSelector(state => state.profile.profile);
   const contacts = useSelector(state => state.contact.contact);
   const transaction = useSelector(state => state.transaction.transaction);
   const confirm = useSelector(state => state.servise.message);
@@ -47,7 +43,15 @@ const Transaction = () => {
   const user_id = localStorage.getItem("id");
 
   useEffect(() => {
-    let result = [];
+    dispatch(allUserContacts())
+  }, [form]);
+
+  const showForm = () => {
+    setForm(!form)
+  };
+
+  useEffect(() => {
+    let result = []
 
     transaction.map(item => {
       if (item.from === item.to) {
@@ -60,13 +64,15 @@ const Transaction = () => {
     })
 
     setBalanse(result.reduce(function (sum, current) {
-      return sum + current;
-    }, 0));
+      return sum + current
+    }, 0))
   }, [transaction]);
 
   useEffect(() => {
     confirm && message.success(confirm)
-  }, [confirm])
+    dispatch(userProfile())
+    dispatch(getAllTransaction())
+  }, [confirm]);
 
   return (
     <div className="transaction-wrp">
@@ -98,7 +104,7 @@ const Transaction = () => {
             </div>
             <img src={card} alt="card-pic" className="credit-card-pic"></img>
           </div>
-          <div>
+          <div className="trans-wrp">
             <div className="trans-form-wrp">
               {form && <TransactionForm contacts={contacts} balanse={balanse} />}
             </div>
@@ -107,7 +113,6 @@ const Transaction = () => {
               {(typeof (transaction) === "string")
                 ? <h2>You dont have transactions yet</h2>
                 : <>
-                  {/* <Input placeholder="Search contact" allowClear onChange={searchContact} style={{ width: 250 }} /> */}
                   <List
                     className="trans-list"
                     itemLayout="vertical"
@@ -120,7 +125,6 @@ const Transaction = () => {
                       <List.Item
                         className="trans-list-item"
                         key={item.id}
-                      // extra={item.amount}
                       >
                         <List.Item.Meta
                           avatar={
@@ -130,10 +134,9 @@ const Transaction = () => {
                           }
                           title={
                             item.from === user_id
-                              ? item.to
-                              : item.from
+                              ? allUsers.map(data => item.to === data.user && `${data.firstName} ${data.lastName}`)
+                              : allUsers.map(data => item.from === data.user && `${data.firstName} ${data.lastName}`)
                           }
-                          // description={item.amount}
                           description={
                             item.from === item.to
                               ? +item.amount

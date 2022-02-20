@@ -9,33 +9,33 @@ import { userProfile, updateUserProfile } from "../redux/actions/profileAction";
 import Loader from "../elements/Loader";
 import { Form, Input, Button, message } from "antd";
 
+import avatar from "../assets/icons/avatar.svg"
+
 import "../assets/components/profile.css";
 import "antd/dist/antd.css";
 
-import avatar from "../assets/icons/avatar.svg"
-
 
 const Profile = () => {
-
-  const [show, setShow] = useState(false);
-  const [showForm, setShowForm] = useState(false);
-
+  
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(userProfile())
   }, []);
 
+  const [show, setShow] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+
   const user = useSelector(state => state.profile.user_profile[0]);
   const success = useSelector(state => state.servise.message);
 
   const showUsers = () => {
     setShow(!show)
-  }
+  };
 
   const updateUser = () => {
     setShowForm(!showForm)
-  }
+  };
 
   const [form] = Form.useForm();
 
@@ -44,18 +44,21 @@ const Profile = () => {
       firstName: values.firstName,
       lastName: values.lastName,
       id: user.id
-    }
-    dispatch(updateUserProfile(data));
-    form.resetFields();
+    }  
+    dispatch(updateUserProfile(data))
+    form.resetFields()
   };
 
   const onReset = () => {
-    form.resetFields();
+    form.resetFields()
   };
 
   useEffect(() => {
     success && message.success(success)
+    setShowForm(false)
+    dispatch(userProfile())
   }, [success]);
+
 
   return (
     <div className="profile-wrp">

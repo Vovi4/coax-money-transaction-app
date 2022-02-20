@@ -6,7 +6,7 @@
 body {
   /* background: #ebe3e3; */
   background: #eaebec;
-  
+  cursor: default;
   /* background: #ede6f4; */
   overflow-y: auto;
 }

@@ -16,9 +16,10 @@ import "antd/dist/antd.css";
 const CreateProfile = () => {
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const isAuth = useSelector(state => state.auth.isAuth);
   const loader = useSelector(state => state.servise.loading);
-
 
   useEffect(() => {
     if (isAuth) {
@@ -30,7 +31,6 @@ const CreateProfile = () => {
   const userData = useSelector(state => state.auth.user);
   const { token, id, email } = userData;
 
-  const dispatch = useDispatch();
   const [form] = Form.useForm();
 
   const formSubmit = (values) => {

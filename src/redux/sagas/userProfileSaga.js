@@ -32,8 +32,7 @@ function* getUserProfileFetch () {
   } catch (error) {
     yield put({ type: PROFILE_ERROR, error })
     console.log("Something wrong")
-    yield put({type: HIDE_LOADER})
-    
+    yield put({type: HIDE_LOADER})    
   }
 }
 

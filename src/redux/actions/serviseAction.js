@@ -1,6 +1,5 @@
 import { SHOW_LOADER, HIDE_LOADER } from "../types/types";
 
-
 export function showLoader() {
   return {
     type: SHOW_LOADER

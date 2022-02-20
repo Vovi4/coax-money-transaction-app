@@ -28,14 +28,12 @@ function* createTransactionFetch (action) {
   } catch (error) {
     yield put({ type: TRANSACTION_ERROR, error })
     console.log("Something wrong")
-    yield put({type: HIDE_LOADER})
-    
+    yield put({type: HIDE_LOADER})    
   }
 }
 
 async function setTransaction(token, id, recipient, amount) {
 
-  // const response = 
   await fetch(`${API_URL}/rest/v1/transaction`, {
     method: "POST",
     headers: {
@@ -49,7 +47,6 @@ async function setTransaction(token, id, recipient, amount) {
       "amount": amount
     }),
   });
-  // return await response.json();
 }
 
 

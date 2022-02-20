@@ -8,42 +8,41 @@ import Loader from "../elements/Loader";
 import { allUsersProfile } from "../redux/actions/profileAction";
 import { createContact } from "../redux/actions/contactAction";
 
-import "../assets/components/users-list.css";
-import "antd/dist/antd.css";
-
 import { PlusOutlined } from "@ant-design/icons";
 
 import user_avatar from "../assets/icons/user_avatar.svg";
+
+import "../assets/components/users-list.css";
+import "antd/dist/antd.css";
 
 
 const UsersList = () => {
 
   const dispatch = useDispatch();
-
-  const profile = useSelector(state => state.profile.profile);
-  const loader = useSelector(state => state.servise.loading);
-  // const user = useSelector(state => state.profile.user_profile[0]);
-
-  const [newProfile, setNewProfile] = useState('');
-
-  const searchProfile = (e) => {
-    setNewProfile(profile.filter(el => el.email.includes(e.target.value)))
-  }
-
+  
   useEffect(() => {
     dispatch(allUsersProfile());
   }, []);
 
+  const [newProfile, setNewProfile] = useState("");
+
+  const profile = useSelector(state => state.profile.profile);
+  const loader = useSelector(state => state.servise.loading);
+
+  const searchProfile = (e) => {
+    setNewProfile(profile.filter(el => el.email.includes(e.target.value)))
+  };
+
   const addContact = (id) => {
     dispatch(createContact(id))
-  }
+  };
 
 
   return (
     <div className="all-profile-wrp">
       <h2>List of user profiles</h2>
       {loader && <Loader />}
-      <Input placeholder="Search profile" allowClear onChange={searchProfile} style={{ width: 250 }} />
+      <Input placeholder="Search profile by email" allowClear onChange={searchProfile} style={{ width: 250 }} />
       <List
         className="users-profile-list"
         itemLayout="vertical"

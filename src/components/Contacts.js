@@ -6,16 +6,16 @@ import UsersList from "./UsersList";
 
 import { allUserContacts, deleteContact } from "../redux/actions/contactAction";
 
-import { List, Avatar, Input, Button, Popover, message } from 'antd';
+import { List, Avatar, Input, Button, Popover, message } from "antd";
 import Loader from "../elements/Loader";
 
 import contact from "../assets/image/contacts.jpg"
 
-import { DeleteOutlined } from '@ant-design/icons';
+import { DeleteOutlined } from "@ant-design/icons";
 import user_avatar from "../assets/icons/user_avatar.svg";
 
 import "../assets/components/contacts.css";
-import 'antd/dist/antd.css';
+import "antd/dist/antd.css";
 
 
 const Contacts = () => {
@@ -33,20 +33,20 @@ const Contacts = () => {
   const servise = useSelector(state => state.servise);
   
   const showUsers = () => {
-    setShow(!show);
-    console.log(show)
-  }
+    setShow(!show)
+  };
   
   const searchContact = (e) => {
     setNewContact(contacts.filter(el => el.email.includes(e.target.value)))
-  }
+  };
   
   const delContact = (id) => {
     dispatch(deleteContact(id))
-  }
+  };
 
   useEffect(() => {
     servise.message && message.success(servise.message)
+    dispatch(allUserContacts())
   }, [servise.message])
 
   return (
@@ -60,7 +60,7 @@ const Contacts = () => {
         {(typeof(contacts) === "string")
           ? <h2>You dont have contacts yet</h2>
           : <>
-            <Input placeholder="Search contact" allowClear onChange={searchContact} style={{ width: 250 }} />
+            <Input placeholder="Search contact by email" allowClear onChange={searchContact} style={{ width: 250 }} />
             <List
               className="users-profile-list"
               itemLayout="vertical"

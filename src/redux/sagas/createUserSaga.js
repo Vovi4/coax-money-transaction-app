@@ -29,7 +29,6 @@ function* createUserFetch( action ) {
 
 async function createUser (token, id, email, firstName, lastName) {
 
-  // const response = 
   await fetch(`${API_URL}/rest/v1/profile`, {
     method: "POST",
     headers: {
@@ -44,7 +43,6 @@ async function createUser (token, id, email, firstName, lastName) {
       "lastName": lastName
     }),
   });
-  // return await response.json();
 }
 
 
