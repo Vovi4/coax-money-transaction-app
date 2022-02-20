@@ -24,10 +24,4 @@
 .form-btn-wrp {
   display: flex;
   justify-content: space-between;
-  /* margin: 24px; */
 }
-
-/* .transaction-form {
-  display: flex;
-  flex-direction: column;
-} */

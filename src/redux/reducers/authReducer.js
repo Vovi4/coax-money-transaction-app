@@ -3,6 +3,7 @@ import { SIGN_UP_SUCCESS, LOG_IN_SUCCESS, CREATE_USER_SUCCESS, RESSET_PASS_SUCCE
 
 const initialState = {
   isAuth: false,
+  isCreate: false,
   logData: [],
   user: [],
   error: null
@@ -26,7 +27,7 @@ const authReducer = (state = initialState, action) => {
     case CREATE_USER_SUCCESS:
       return {
         ...state,
-        isAuth: true,
+        isCreate: true,
         error: null
       }
     case RESSET_PASS_SUCCESS:

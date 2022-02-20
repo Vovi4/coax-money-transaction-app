@@ -1,16 +1,8 @@
 .home-page-wrp {
-  /* background-color: #ff6d4c; */
-  /* background: #b4a1a1; */
-  /* background: #eaebec; */
   display: grid;
   grid-template-areas: 
     "main";
-    /* "block-2"
-    "block-3"
-    "blok-4"; */
-  grid-template-rows: 34vw 
-  /* 40vw 40vw 330px */
-  ;
+  grid-template-rows: 34vw;
   font-family: Montserrat, "Open Sans", Helvetica, Arial, sans-serif;
 }
 
@@ -22,7 +14,7 @@
   background: #ffffff;
 }
 
-p {
+.main-item-discript {
   margin-bottom: 0;
 }
 
@@ -32,7 +24,7 @@ p {
   text-transform: uppercase;
   font-weight: 900;
   line-height: 120%;
-  font-size:3vw;
+  font-size:2.75vw;
 }
 
 .main-btn-wrp {
@@ -45,7 +37,7 @@ p {
   border-radius: 0.6vw;
   font-size: 1.75vw;
   height: 4vw;
-  width: 13.5vw;
+  width: 15vw;
 }
 
 .btn-title {
@@ -56,7 +48,7 @@ p {
 }
 
 .main-pic {
-  max-width: 45%;
+  max-width: 60%;
   height: auto;
 }
 

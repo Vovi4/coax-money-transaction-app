@@ -89,10 +89,14 @@
   margin: 2vw;
   padding: 2vw 0 2vw;
   min-height: 5vw;
-  width: 65%;
+  width: 75%;
   background: #ffffff;
   border-radius: 10px;
   box-shadow: 0 0 10px 5px #dddddd;
+}
+
+.ant-list-item-meta {
+  align-items: center;
 }
 
 .ant-list-item-meta-content {

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 import { createUser } from "../redux/actions/authAction";
 
@@ -18,15 +18,14 @@ const CreateProfile = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const isAuth = useSelector(state => state.auth.isAuth);
+  const isCreate = useSelector(state => state.auth.isCreate);
   const loader = useSelector(state => state.servise.loading);
 
   useEffect(() => {
-    if (isAuth) {
+    if (isCreate) {
       navigate("/login", { replace: true })
-      // navigate("/transaction", { replace: true })
     }
-  }, [isAuth]);
+  }, [isCreate]);
 
   const userData = useSelector(state => state.auth.user);
   const { token, id, email } = userData;
@@ -52,7 +51,6 @@ const CreateProfile = () => {
             initialValues={{ remember: true }}
             onFinish={formSubmit}
           >
-
             <Form.Item
               name="firstName"
               rules={[

@@ -54,8 +54,9 @@ const Contacts = () => {
       <div className="all-contact-wrp">
         <div className="contact-content">
           <img src={contact} alt="contacts-pic" className="contacts-pic"></img>
-          <h2>List of contacts</h2>
         </div>
+        <div className="contact-list">
+          <h2>List of contacts</h2>
         {servise.loading && <Loader />}
         {(typeof(contacts) === "string")
           ? <h2>You dont have contacts yet</h2>
@@ -90,6 +91,7 @@ const Contacts = () => {
             />
           </>
         }
+        </div>
         <div className="users-list-wrp">
           <div className="view-btn-wrp">
             <Button type="default" className="view-user-btn" onClick={showUsers}>

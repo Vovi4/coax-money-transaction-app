@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
 
-import { List, Avatar, Input, Popover } from 'antd';
+import { List, Avatar, Input, Popover } from "antd";
 import Loader from "../elements/Loader";
 
 import { allUsersProfile } from "../redux/actions/profileAction";

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { Button } from "antd";
 
-import image from "../assets/image/main_pic_1.jpg"
+import image from "../assets/image/main_pic.jpg"
 
 import "../assets/pages/home-page.css";
 
@@ -14,7 +14,7 @@ const Home = () => {
     <div className="home-page-wrp">
       <div className="main-content-wrp">
         <div className="main-discript">
-          <p className="main-item">Free payment <br /> processing to <br /> help everyone <br />easily transfer money</p>
+          <p className="main-item-discript">Free payment <br /> processing to <br /> help everyone <br />easily transfer <br />money</p>
           <div className="main-btn-wrp">
           <Link to="signup">   
             <Button type="primary" className="start-now-btn">

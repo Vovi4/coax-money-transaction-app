@@ -5,7 +5,7 @@ import { useNavigate, Outlet, Link } from "react-router-dom";
 import { logOut } from "../redux/actions/authAction";
 
 import { BsCashCoin } from "react-icons/bs";
-import { UserOutlined } from '@ant-design/icons';
+import { UserOutlined } from "@ant-design/icons";
 
 import "../assets/layout.css";
 

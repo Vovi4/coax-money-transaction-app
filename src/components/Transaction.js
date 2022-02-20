@@ -109,7 +109,7 @@ const Transaction = () => {
               {form && <TransactionForm contacts={contacts} balanse={balanse} />}
             </div>
             <div className="trans-list-wrp">
-              <h3>Transactions</h3>
+              <h2>Transactions</h2>
               {(typeof (transaction) === "string")
                 ? <h2>You dont have transactions yet</h2>
                 : <>

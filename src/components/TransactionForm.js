@@ -22,6 +22,9 @@ const TransactionForm = (props) => {
     if (values.amount <= props.balanse) {
       dispatch(createTransacrion(values))
     }
+    else if (typeof(values.amount) !== "number") {
+      message.error("Amount should be number")
+    }
     else {
       message.error("Not enough money")
     }
@@ -49,11 +52,17 @@ const TransactionForm = (props) => {
 
               rules={[
                 {
-                  // required: true,
-                  // type: 'number',
-                  // message: "Should be a number"
-
-                }
+                  required: true,
+                  message: "Please input amount"
+                },
+                {
+                  whitespace: true,
+                  message: "E-mail shouldn't contain spaces!"
+                },
+                // {
+                //   type: "number",
+                //   message: "Should be a number"
+                // }                
               ]}
             >
               <Input placeholder="Enter the amount" />
@@ -63,7 +72,7 @@ const TransactionForm = (props) => {
               // label="Recipient"
               rules={[
                 {
-                  // required: true,
+                  required: true,
                   message: "Please choose recipient"
                 }
               ]}
@@ -71,10 +80,6 @@ const TransactionForm = (props) => {
               <Select
                 showSearch
                 placeholder="Select a recipient"
-              // optionFilterProp="children"
-              // filterOption={(input, option) =>
-              //   option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-              // }
               >
                 {!props.contacts
                   ? <Option>You dont have contacts</Option>

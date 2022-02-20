@@ -1,9 +1,6 @@
 .layout-wrp {
   position: relative;    
   width: 95%;
-  /* background-color: #ff6d4c; */
-  /* background: #b4a1a1; */
-  /* background: #eaebec; */
   border-radius: 2.5vw;
   display: grid;
   grid-template-areas: 
@@ -48,7 +45,6 @@
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
-  /* font-size: 1.2vw; */
   cursor: pointer ;
 }
 

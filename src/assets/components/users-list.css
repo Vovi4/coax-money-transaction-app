@@ -2,9 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #f8f8f8;
-  margin: 10px 0 10px;
-  width: 100%;
+  margin: 2vw 0 2vw;
+  padding: 2vw 0 2vw;
+  width: 75%;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px #dddddd;
 }
 
 .users-search-input {
@@ -20,4 +23,12 @@
   flex-direction: column;
   margin-top: 2vw;
   width: 80%;
+}
+
+.ant-list-vertical .ant-list-item-meta {
+  margin-bottom: 0;
+}
+
+.ant-list-pagination .ant-pagination-options {
+  display: none;
 }

@@ -106,29 +106,21 @@ const Profile = () => {
                 <Form form={form} name="updateUser-form" onFinish={onFinish} className="form-item">
                   <Form.Item
                     name="firstName"
-                    // label="Amount"
-
                     rules={[
                       {
-                        // required: true,
-                        // type: 'number',
-                        // message: "Should be a number"
-
+                        required: true,
+                        message: "Please enter First Name"
                       }
                     ]}
                   >
                     <Input placeholder="Enter First Name" />
                   </Form.Item>
                   <Form.Item
-                    name="lastName"
-                    // label="Amount"
-
+                    name="lastName"              
                     rules={[
                       {
-                        // required: true,
-                        // type: 'number',
-                        // message: "Should be a number"
-
+                        required: true,                       
+                        message: "Please enter Last Name"
                       }
                     ]}
                   >

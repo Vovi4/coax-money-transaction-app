@@ -4,20 +4,16 @@
     "menu"
     "content"
     "users";
-  grid-template-columns: minmax(64px, 18vw) 1fr 
-  /* 256px */
-  ;
+  grid-template-columns: minmax(64px, 18vw) 1fr;
   column-gap: 10px;
 }
 
 .main-nav-wrp {
   background: #ffffff;
-  /* width: 256px; */
 }
 
 .main-item-wrp {
   display: flex;
-  /* justify-content: center; */
   flex-direction: column;
   background: #ffffff;
   padding: 2vw;

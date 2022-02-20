@@ -9,6 +9,7 @@
     "user-item";
   grid-template-columns: 20vw 1fr; 
   column-gap: 10px;
+  margin-bottom: 10px;
 }
 
 .profile-avatar-wrp {
@@ -84,7 +85,6 @@
   box-shadow: 0 0 10px 5px #dddddd;
 }
 
-
 .form-item {
   margin-top: 16px;
   width: 220px;
@@ -93,7 +93,6 @@
 .form-btn-wrp {
   display: flex;
   justify-content: space-between;
-  /* margin: 24px; */
 }
 
 .list-wrp {
@@ -101,4 +100,5 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  background: #f8f8f8;
 }
