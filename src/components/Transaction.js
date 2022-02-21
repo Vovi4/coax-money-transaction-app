@@ -74,6 +74,12 @@ const Transaction = () => {
     dispatch(getAllTransaction())
   }, [confirm]);
 
+  transaction.forEach(item => item.from === user_id
+    ? allUsers.map(data => item.to === data.user && (item.firstName = data.firstName, item.lastName = data.lastName))
+    : allUsers.map(data => item.from === data.user && (item.firstName = data.firstName, item.lastName = data.lastName)))
+
+  const transData = transaction.sort((a, b) => a.created_at > b.created_at ? 1 : -1);  
+    
   return (
     <div className="transaction-wrp">
       {!user
@@ -117,10 +123,10 @@ const Transaction = () => {
                     className="trans-list"
                     itemLayout="vertical"
                     size="small"
-                    pagination={transaction.length > 5
+                    pagination={transData.length > 5
                       ? { pageSize: 5 }
                       : false}
-                    dataSource={transaction}
+                    dataSource={transData}
                     renderItem={item => (
                       <List.Item
                         className="trans-list-item"
@@ -134,8 +140,8 @@ const Transaction = () => {
                           }
                           title={
                             item.from === user_id
-                              ? allUsers.map(data => item.to === data.user && `${data.firstName} ${data.lastName}`)
-                              : allUsers.map(data => item.from === data.user && `${data.firstName} ${data.lastName}`)
+                              ? `${item.firstName} ${item.lastName}`
+                              : `${item.firstName} ${item.lastName}`
                           }
                           description={
                             item.from === item.to
