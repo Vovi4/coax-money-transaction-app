@@ -1,0 +1,29 @@
+.main-wrp {
+  display: grid;
+  grid-template-areas: 
+    "menu"
+    "content"
+    "users";
+  grid-template-columns: minmax(64px, 18vw) 1fr;
+  column-gap: 10px;
+}
+
+.main-nav-wrp {
+  background: #ffffff;
+}
+
+.main-item-wrp {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  padding: 2vw;
+  min-height: 34vw;
+}
+
+.user-contacts {
+  display: flex;
+  justify-content: center;
+  padding: 6px;
+  background: #ffffff;
+}
+
