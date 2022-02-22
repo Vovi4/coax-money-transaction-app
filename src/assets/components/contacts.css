@@ -1,0 +1,46 @@
+.contacts-wrp {
+  background: #f8f8f8;
+  min-height: 35vw;
+}
+
+.all-contact-wrp {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;    
+}
+
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contacts-pic {
+  height: 16vw;
+  width: auto;
+  margin: 2vw 0 2vw;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2vw 0 2vw;
+  width: 75%;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px #dddddd;
+}
+
+.users-list-wrp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1.5vw 0 1.5vw;
+  width: 100%;
+}
+
+.ant-list-vertical .ant-list-item {
+  align-items: center
+}

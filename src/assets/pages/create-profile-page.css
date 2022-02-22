@@ -1,0 +1,46 @@
+.user-create-wrp {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  background: #ffffff;
+}
+
+.user-create-content {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 5px #dddddd;
+}
+
+.profile-pic {
+  margin-left: 20px;
+  height: 280px;
+  width: auto;
+}
+
+.user-form-wrp {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  height: 330px;
+  width: 290px;
+}
+
+.user-create-form {
+  width: 230px;
+  margin-top: 12px;
+}
+
+.ant-row.ant-form-item:last-child {
+  margin-bottom: 12px;
+}
+
+.user-create-form-btn {
+  margin-top: 24px;
+  border-radius: 6px;
+  width: 100%;
+}

@@ -1,0 +1,10 @@
+.loader-wrp{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  height: 25px;
+  width: 25px;
+}
