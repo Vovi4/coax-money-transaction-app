@@ -13,7 +13,6 @@ import { PlusOutlined } from "@ant-design/icons";
 import user_avatar from "../assets/icons/user_avatar.svg";
 
 import "../assets/components/users-list.css";
-import "antd/dist/antd.css";
 
 
 const UsersList = () => {
@@ -29,8 +28,12 @@ const UsersList = () => {
   const profile = useSelector(state => state.profile.profile);
   const loader = useSelector(state => state.servise.loading);
 
+  const user_id = localStorage.getItem("id");
+  
+  const profileList = profile.filter(el => el.user !== user_id)
+ 
   const searchProfile = (e) => {
-    setNewProfile(profile.filter(el => el.email.includes(e.target.value)))
+    setNewProfile(profileList.filter(el => el.email.includes(e.target.value)))
   };
 
   const addContact = (id) => {
@@ -47,11 +50,11 @@ const UsersList = () => {
         className="users-profile-list"
         itemLayout="vertical"
         size="small"
-        pagination={profile.length > 5 
+        pagination={profileList.length > 5 
           ? { pageSize: 5 }
           : false}
         dataSource={!newProfile 
-          ? profile 
+          ? profileList 
           : newProfile}
         renderItem={item => (
           <List.Item

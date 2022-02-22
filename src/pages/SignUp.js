@@ -12,7 +12,6 @@ import signup from "../assets/image/sign_up.jpg"
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
 import "../assets/pages/signup-page.css";
-import "antd/dist/antd.css";
 
 
 const SignUp = () => {

@@ -10,7 +10,6 @@ import Loader from "../elements/Loader";
 import profile from "../assets/image/profile.jpg"
 
 import "../assets/pages/create-profile-page.css";
-import "antd/dist/antd.css";
 
 
 const CreateProfile = () => {

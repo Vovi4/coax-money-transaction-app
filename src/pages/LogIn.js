@@ -12,7 +12,6 @@ import login from "../assets/image/log_in.jpg"
 
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
-import "antd/dist/antd.css";
 import "../assets/pages/login-page.css"
 
 

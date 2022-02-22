@@ -11,7 +11,6 @@ import reset from "../assets/image/reset.jpg"
 import { LockOutlined } from "@ant-design/icons";
 
 import "../assets/components/resset-password.css";
-import "antd/dist/antd.css";
 
 
 const ResetPassword = () => {

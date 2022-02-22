@@ -11,7 +11,6 @@ import {
 } from "@ant-design/icons";
 
 import "../assets/pages/main-page.css";
-import "antd/dist/antd.css";
 
 
 const Main = () => {

@@ -78,7 +78,7 @@ const Transaction = () => {
     ? allUsers.map(data => item.to === data.user && (item.firstName = data.firstName, item.lastName = data.lastName))
     : allUsers.map(data => item.from === data.user && (item.firstName = data.firstName, item.lastName = data.lastName)))
 
-  const transData = transaction.sort((a, b) => a.created_at > b.created_at ? 1 : -1);  
+  const transData = transaction.sort((a, b) => a.created_at < b.created_at ? 1 : -1);  
     
   return (
     <div className="transaction-wrp">

@@ -8,7 +8,6 @@ import { createTransacrion } from "../redux/actions/transactionAction";
 import { Form, Input, Button, Select, message } from "antd";
 
 import "../assets/components/transaction-form.css";
-import "antd/dist/antd.css";
 
 const { Option } = Select;
 
@@ -19,13 +18,14 @@ const TransactionForm = (props) => {
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    if (values.amount <= props.balanse) {
+    if (values.amount <= 0) {
+      message.error("Amount should be more then 0")
+    } else if (values.amount < props.balanse) {
       dispatch(createTransacrion(values))
-    }
-    else if (typeof(values.amount) !== "number") {
+      form.resetFields()
+    } else if (typeof(values.amount) !== "number") {
       message.error("Amount should be number")
-    }
-    else {
+    } else {
       message.error("Not enough money")
     }
   };
@@ -48,8 +48,6 @@ const TransactionForm = (props) => {
           <Form form={form} name="transaction-form" onFinish={onFinish} className="form-item">
             <Form.Item
               name="amount"
-              // label="Amount"
-
               rules={[
                 {
                   required: true,
@@ -59,17 +57,12 @@ const TransactionForm = (props) => {
                   whitespace: true,
                   message: "E-mail shouldn't contain spaces!"
                 },
-                // {
-                //   type: "number",
-                //   message: "Should be a number"
-                // }                
               ]}
             >
               <Input placeholder="Enter the amount" />
             </Form.Item>
             <Form.Item
               name="recipient"
-              // label="Recipient"
               rules={[
                 {
                   required: true,

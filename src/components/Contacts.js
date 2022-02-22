@@ -15,7 +15,6 @@ import { DeleteOutlined } from "@ant-design/icons";
 import user_avatar from "../assets/icons/user_avatar.svg";
 
 import "../assets/components/contacts.css";
-import "antd/dist/antd.css";
 
 
 const Contacts = () => {

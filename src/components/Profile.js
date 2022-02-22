@@ -12,7 +12,6 @@ import { Form, Input, Button, message } from "antd";
 import avatar from "../assets/icons/avatar.svg"
 
 import "../assets/components/profile.css";
-import "antd/dist/antd.css";
 
 
 const Profile = () => {

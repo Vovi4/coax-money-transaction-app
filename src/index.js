@@ -10,6 +10,7 @@ import store from "./redux/store";
 import App from "./App";
 
 import "./assets/index.css";
+import "antd/dist/antd.css";
 
 ReactDOM.render(
   <BrowserRouter>
